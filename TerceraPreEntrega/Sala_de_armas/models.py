@@ -7,6 +7,6 @@ class Usuarios(models.Model):
     dni = models.IntegerField()
     
     def __str__(self):
-        return f"{Usuarios.apellido} - {Usuarios.nombre} - {Usuarios.dni}"
+        return f"{self.apellido} - {self.nombre} - {self.dni}"
     
     
