@@ -3,6 +3,9 @@ from django.http import HttpResponse
 from django.http import request
 
 # Create your views here.
+def padre(request):
+    return render(request, 'Sala_de_armas/padre.html')
+
 def index(request):
     return render(request, 'Sala_de_armas/index.html')
 

@@ -9,4 +9,9 @@ class Usuarios(models.Model):
     def __str__(self):
         return f"{self.apellido} - {self.nombre} - {self.dni}"
     
+class Fusile(models.Model):
+    tipo = models.CharField(max_length=20)
+    ni = models.IntegerField()
     
+    def __str__(self):
+        return f"{self.tipo} - {self.ni}"    
