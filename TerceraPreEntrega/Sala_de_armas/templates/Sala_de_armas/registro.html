@@ -1,87 +1,28 @@
-﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <!--[if IE]>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <![endif]-->
-    <title>The BIG TEMPLATE : RESPONSIVE and FREE</title>
-    <!-- BOOTSTRAP CORE STYLE CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet" />
-    <!-- FONT AWESOME CSS -->
-    <link href="assets/css/font-awesome.css" rel="stylesheet" />
-    <!-- ANIMATION STYLES -->
-    <link href="assets/css/animate.css" rel="stylesheet" />
-    <!-- CUSTOM STYLE CSS -->
-    <link href="assets/css/style.css" rel="stylesheet" />
-    <!-- GOOGLE FONT -->
-    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css' />
-</head>
-<body>
+﻿{% extends 'Sala_de_armas/padre.html' %}
 
-    <div id="home-sec">
+{% load static %}
 
-        <div id="carousel-example" class="carousel slide" data-ride="carousel">
+    {% block contenido %}
 
-            <div class="carousel-inner">
-                <div class="item active ">
 
-                    <img src="assets/img/1.jpg" alt="" />
-                    <div class="carousel-caption">
-                        <h1 class="slide-h1 wow bounceInDown" data-wow-duration="1s">THE BIG WONDER</h1>
-                        <h2 class="slide-h2 wow bounceInLeft" data-wow-duration="2s" data-wow-delay="1s">ULTIMATE TEMPLATE</h2>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="assets/img/1.jpg" alt="" />
-                    <div class="carousel-caption">
-                        <h1 class="slide-h1 wow bounceInDown" data-wow-duration="2s">RESPONSIVE DESIGN</h1>
-                        <h2 class="slide-h2 wow bounceInLeft" data-wow-duration="2s" data-wow-delay="1s">FREE TO USE</h2>
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="assets/img/1.jpg" alt="" />
-                    <div class="carousel-caption">
-                        <h1 class="slide-h1 wow bounceInDown" data-wow-duration="2s">HANDCRAFTED </h1>
-                        <h2 class="slide-h2 wow bounceInLeft" data-wow-duration="2s" data-wow-delay="1s">ONLY FOR YOU</h2>
-                    </div>
-                </div>
-            </div>
-            <!--INDICATORS-->
-            <ol class="carousel-indicators">
-                <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example" data-slide-to="1"></li>
-                <li data-target="#carousel-example" data-slide-to="2"></li>
-            </ol>
-
-        </div>
-    </div>
-    <!-- HOME SECTION END-->
-    <div id="nav">
-        <ul class="list-unstyled">
-            <li><a data-toggle="tooltip" data-placement="left" title="Home" href="#home-sec">Home</a></li>
-            <li><a data-toggle="tooltip" data-placement="left" title="About" href="#about-sec">About</a></li>
-            <li><a data-toggle="tooltip" data-placement="left" title="Features" href="#features-sec">Features</a></li>
-            <li><a data-toggle="tooltip" data-placement="left" title="Team" href="#team-sec">Team</a></li>
-            <li><a data-toggle="tooltip" data-placement="left" title="Contact" href="#contact-sec">Contact</a></li>
-        </ul>
-    </div>
-    <!-- NAV SECTION END-->
     <section id="about-sec">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-12">
-                    <h1 data-scroll-reveal="enter from the bottom after 0.1s">ABOUT </h1>
+                    <h1 data-scroll-reveal="enter from the bottom after 0.1s">REGISTRO DE USUARIOS </h1>
                     <p data-scroll-reveal="enter from the bottom after 0.3s">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                  Mauris sagittis felis dolor, id gravida tellus tempor vitae. In efficitur ipsum non faucibus tempus.
-                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                  Mauris sagittis felis dolor, id gravida tellus tempor vitae. In efficitur ipsum non faucibus tempus.
-                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                  Mauris sagittis felis dolor, id gravida tellus tempor vitae. In efficitur ipsum non faucibus tempus.
+                        
+                        {% if formularioRegistro.errors %}
+                        <p style="color: red;"> Están mal los datos, revisar</p>
+                        {% endif %}
+                        <form action="/registro/" method="POST"> {% csrf_token %}
+                            
+                            <p>Nombre:   <input type="text" name="nombre"></p>
+                            <p>Apellido: <input type="text" name="apellido"></p>
+                            <p>Dni:      <input type="text" name="dni"></p>
+                            <input href="#" class="btn btn-primary" type="submit" class="formcontrol" value="Enviar"></p>
+
+                        </form>
                     </p>
                 </div>
 
@@ -93,41 +34,24 @@
         <div class="container ">
             <div class="row pad-btm">
                 <div class="col-lg-8 col-md-8 col-sm-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-12">
-                    <h1 data-scroll-reveal="enter from the bottom after 0.1s">FEATURES </h1>
+                    <h1 data-scroll-reveal="enter from the bottom after 0.1s">REGISTRO DE FUSILES </h1>
                     <p data-scroll-reveal="enter from the bottom after 0.3s">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                  Mauris sagittis felis dolor, id gravida tellus tempor vitae. In efficitur ipsum non faucibus tempus.
+                        {% if formularioRegistrofusil.errors %}
+                        <p style="color: red;"> Están mal los datos, revisar</p>
+                        {% endif %}
+                        <form action="/registro/" method="POST"> {% csrf_token %}
+                            
+                            <p>Tipo:   <input type="text" name="ni"></p>
+                            <p>NI: <input type="text" name="tipo"></p>
+                            
+                            <input href="#" class="btn btn-primary" type="submit" class="formcontrol" value="Enviar"></p>
+
+                        </form>
                     </p>
                 </div>
 
             </div>
-            <div class="row ">
-                <div class="col-lg-4 col-md-4 col-sm-4  col-xs-12 text-center" data-scroll-reveal="enter from the bottom after 0.5s">
-                    <i class="fa fa-recycle fa-5x"></i>
-                    <h4 >Responsive Design</h4>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                            Lorem ipsum dolor sit amet.
-                    </p>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4  col-xs-12 text-center" data-scroll-reveal="enter from the bottom after 0.7s" >
-                    <i class="fa fa-briefcase fa-5x"></i>
-                    <h4>Easy to Customize</h4>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                          Lorem ipsum dolor sit amet.
-                    </p>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4  col-xs-12 text-center" data-scroll-reveal="enter from the bottom after 0.9s">
-                    <i class="fa fa-history fa-5x"></i>
-                    <h4>Free to Use</h4>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                           Lorem ipsum dolor sit amet.
-                    </p>
-                </div>
-
-            </div>
+            
 
         </div>
 
@@ -137,37 +61,36 @@
         <div class="container">
             <div class="row pad-btm">
                 <div class="col-lg-8 col-md-8 col-sm-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-12">
-                    <h1 data-scroll-reveal="enter from the bottom after 0.1s">TEAM </h1>
+                    <h1 data-scroll-reveal="enter from the bottom after 0.1s">REGISTRO DE MUNICIÓN </h1>
                     <p data-scroll-reveal="enter from the bottom after 0.3s">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                  Mauris sagittis felis dolor, id gravida tellus tempor vitae. In efficitur ipsum non faucibus tempus.
+                        {% if formularioRegistromunicion.errors %}
+                        <p style="color: red;"> Están mal los datos, revisar</p>
+                        {% endif %}
+                        <form action="/registro/" method="POST"> {% csrf_token %}
+                            
+                            <p>Calibre:   <input type="text" class="formcontrol" name="calibre"></p>
+                            <p>Cantidad: <input type="text" class="formcontrol" name="cantidad"></p>
+                            
+                            <input href="#" class="btn btn-primary" type="submit" class="formcontrol" value="Enviar"></p>
+
+                        </form>
                     </p>
                 </div>
 
             </div>
             <div class="row">
                 <div class="col-lg-2 col-md-2 col-sm-2  col-xs-12 " data-scroll-reveal="enter from the bottom after 0.4s">
-                    <img src="assets/img/1t.jpg" class="img-circle img-responsive set-img" />
+                    <img src="{% static 'Sala_de_armas/assets/img/1t.jpg' %}" class="img-circle img-responsive set-img" />
 
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4  col-xs-12 " data-scroll-reveal="enter from the bottom after 0.5s">
-                    <h2>LEENA CHI MAXI</h2>
+                    <h2>CAPITÁN <br> FRANCISCO EITO <br/></h2>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                          Lorem ipsum dolor sit amet.
+                        Colegio Militar de la Nación.
                     </p>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-2  col-xs-12 " data-scroll-reveal="enter from the bottom after 0.6s">
-                    <img src="assets/img/2t.jpg" class="img-circle img-responsive set-img" />
-
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4  col-xs-12 " data-scroll-reveal="enter from the bottom after 0.7s">
-                    <h2>JHON DEO ALEX</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                           Lorem ipsum dolor sit amet.
-                    </p>
-                </div>
+                
+                
             </div>
 
         </div>
@@ -178,10 +101,9 @@
         <div class="container">
             <div class="row pad-btm">
                 <div class="col-lg-8 col-md-8 col-sm-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-12">
-                    <h1 data-scroll-reveal="enter from the bottom after 0.1s">CONTACT </h1>
+                    <h1 data-scroll-reveal="enter from the bottom after 0.1s">CONTACTO </h1>
                     <p data-scroll-reveal="enter from the bottom after 0.3s">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                  Mauris sagittis felis dolor, id gravida tellus tempor vitae. In efficitur ipsum non faucibus tempus.
+                        Para soporte contactar a panchoeito@hotmail.com
                     </p>
                 </div>
 
@@ -189,17 +111,17 @@
             <div class="row pad-btm">
 
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  " data-scroll-reveal="enter from the bottom after 0.5s">
-                    <h2>Our Location</h2>
+                    <h2>DIRECCIÓN</h2>
                     <p>
-                        234/89 , UGCH BUILDING HOUSE,
+                        Ruta Provincial 201 y Aviador Benjamin Matienzo,
                            <br />
-                        DOUBLE LANE, NEW YORK CITY, 
+                        EL PALOMAR, PROVINCIA DE BUENOS AIRES, 
                            <br />
-                        UNITED STATES
+                        ARGENTINA
                     </p>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2  col-xs-12 " data-scroll-reveal="enter from the bottom after 0.6s">
-                    <img src="assets/img/1t.jpg" class="img-circle img-responsive cnt-img" />
+                    <img src="{% static 'Sala_de_armas/assets/img/1t.jpg' %}" class="img-circle img-responsive cnt-img" />
 
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4  col-xs-12 " data-scroll-reveal="enter from the bottom after 0.6s">
@@ -220,24 +142,5 @@
 
     </section>
     <!-- CONTACT SECTION END-->
-    <div id="footer-sec">
-           &nbsp;2014 Yourdomain.com | 
-             <a href="http://binarytheme.com" style="font-size: 14px; color: #fff" target="_blank">Design by : binarytheme.com</a>
 
-    </div>
-    <!-- FOOTER SECTION END-->
-    <!--CORE SCRIPTS-->
-    <script src="assets/js/jquery-1.11.1.js"></script>
-    <!--BOOTSTRAP SCRIPTS-->
-    <script src="assets/js/bootstrap.js"></script>
-    <!--WOW SCRIPTS-->
-    <script src="assets/js/wow.js"></script>
-    <!--SCROLL SCRIPTS-->
-    <script src="assets/js/jquery.smooth-scroll.min.js"></script>
-    <!--SCROLL ANIMATION SCRIPTS-->
-    <script src="assets/js/scrollReveal.js"></script>
-    <!--CUSTOM SCRIPTS-->
-    <script src="assets/js/custom.js"></script>
-</body>
-
-</html>
+    {% endblock %}

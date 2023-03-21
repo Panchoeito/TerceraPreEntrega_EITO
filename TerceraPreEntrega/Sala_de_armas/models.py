@@ -14,4 +14,11 @@ class Fusile(models.Model):
     ni = models.IntegerField()
     
     def __str__(self):
-        return f"{self.tipo} - {self.ni}"    
+        return f"{self.tipo} - {self.ni}"   
+    
+class Municion(models.Model):
+    Calibre = models.CharField(max_length=20)
+    Cantidad = models.IntegerField()
+    
+    def __str__(self):
+        return f"{self.calibre} - {self.cantidad}"
