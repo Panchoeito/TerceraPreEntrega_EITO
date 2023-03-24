@@ -41,10 +41,13 @@ def registromunicion(request):
         print(f"{request.POST}")
         calibre = request.POST["calibre"]
         cantidad = request.POST["cantidad"]
-        municion = Municion(calibre=calibre, municion=municion)
+        municion = Municion(calibre=calibre, cantidad=cantidad)
         municion.save()
         
     return render(request, 'Sala_de_armas/registromunicion.html')
 
 def consulta(request):
+    
+    
+    
     return render(request, 'Sala_de_armas/consulta.html')
