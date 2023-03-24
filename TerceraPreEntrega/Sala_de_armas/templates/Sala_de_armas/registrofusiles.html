@@ -1,0 +1,37 @@
+﻿{% extends 'Sala_de_armas/padre.html' %}
+
+{% load static %}
+
+    {% block contenido %}
+
+
+    <section id="features-sec">
+        <div class="container ">
+            <div class="row pad-btm">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-12">
+                    <h1 data-scroll-reveal="enter from the bottom after 0.1s">REGISTRO DE FUSILES </h1>
+                    <p data-scroll-reveal="enter from the bottom after 0.3s">
+                        {% if formularioRegistrofusil.errors %}
+                        <p style="color: red;"> Están mal los datos, revisar</p>
+                        {% endif %}
+                        <form action="" method="POST"> {% csrf_token %}
+                            
+                            <p>Tipo:   <input type="text" name="tipo"></p>
+                            <p>Ni: <input type="number" name="ni"></p>
+                            
+                            <input href="#" class="btn btn-primary" type="submit" class="formcontrol" value="Enviar"></p>
+
+                        </form>
+                    </p>
+                </div>
+
+            </div>
+            
+
+        </div>
+
+    </section>
+    <!-- FEATURE SECTION END-->
+   
+
+    {% endblock %}
