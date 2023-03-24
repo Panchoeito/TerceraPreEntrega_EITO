@@ -30,7 +30,7 @@ def registrofusiles(request):
         print(f"{request.POST}")
         tipo = request.POST["tipo"]
         ni = request.POST["ni"]
-        fusil = Fusile(tipo=tipo, ni=ni, dni=dni)
+        fusil = Fusile(tipo=tipo, ni=ni)
         fusil.save()
         
     return render(request, 'Sala_de_armas/registrofusiles.html')
