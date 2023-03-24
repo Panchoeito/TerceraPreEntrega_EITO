@@ -66,5 +66,8 @@ def registromunicion(request):
         
     return render(request, 'Sala_de_armas/registro.html', {"formularioRegistromunicion": formularioRegistromunicion})
 
+def registrousuario(request):
+    return render(request, 'Sala_de_armas/registrousuario.html')
+
 def consulta(request):
     return render(request, 'Sala_de_armas/consulta.html')

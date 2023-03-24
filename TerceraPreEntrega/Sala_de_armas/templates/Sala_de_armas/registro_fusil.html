@@ -1,0 +1,146 @@
+﻿{% extends 'Sala_de_armas/padre.html' %}
+
+{% load static %}
+
+    {% block contenido %}
+
+
+    <section id="about-sec">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-12">
+                    <h1 data-scroll-reveal="enter from the bottom after 0.1s">REGISTRO DE USUARIOS </h1>
+                    <p data-scroll-reveal="enter from the bottom after 0.3s">
+                        
+                        {% if formularioRegistro.errors %}
+                        <p style="color: red;"> Están mal los datos, revisar</p>
+                        {% endif %}
+                        <form action="/registro/" method="POST"> {% csrf_token %}
+                            
+                            <p>Nombre:   <input type="text" name="nombre"></p>
+                            <p>Apellido: <input type="text" name="apellido"></p>
+                            <p>Dni:      <input type="text" name="dni"></p>
+                            <input href="#" class="btn btn-primary" type="submit" class="formcontrol" value="Enviar"></p>
+
+                        </form>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- ABOUT SECTION END-->
+    <section id="features-sec">
+        <div class="container ">
+            <div class="row pad-btm">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-12">
+                    <h1 data-scroll-reveal="enter from the bottom after 0.1s">REGISTRO DE FUSILES </h1>
+                    <p data-scroll-reveal="enter from the bottom after 0.3s">
+                        {% if formularioRegistrofusil.errors %}
+                        <p style="color: red;"> Están mal los datos, revisar</p>
+                        {% endif %}
+                        <form action="/registro/" method="POST"> {% csrf_token %}
+                            
+                            <p>Tipo:   <input type="text" name="ni"></p>
+                            <p>NI: <input type="text" name="tipo"></p>
+                            
+                            <input href="#" class="btn btn-primary" type="submit" class="formcontrol" value="Enviar"></p>
+
+                        </form>
+                    </p>
+                </div>
+
+            </div>
+            
+
+        </div>
+
+    </section>
+    <!-- FEATURE SECTION END-->
+    <section id="team-sec">
+        <div class="container">
+            <div class="row pad-btm">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-12">
+                    <h1 data-scroll-reveal="enter from the bottom after 0.1s">REGISTRO DE MUNICIÓN </h1>
+                    <p data-scroll-reveal="enter from the bottom after 0.3s">
+                        {% if formularioRegistromunicion.errors %}
+                        <p style="color: red;"> Están mal los datos, revisar</p>
+                        {% endif %}
+                        <form action="/registro/" method="POST"> {% csrf_token %}
+                            
+                            <p>Calibre:   <input type="text" class="formcontrol" name="calibre"></p>
+                            <p>Cantidad: <input type="text" class="formcontrol" name="cantidad"></p>
+                            
+                            <input href="#" class="btn btn-primary" type="submit" class="formcontrol" value="Enviar"></p>
+
+                        </form>
+                    </p>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-sm-2  col-xs-12 " data-scroll-reveal="enter from the bottom after 0.4s">
+                    <img src="{% static 'Sala_de_armas/assets/img/1t.jpg' %}" class="img-circle img-responsive set-img" />
+
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4  col-xs-12 " data-scroll-reveal="enter from the bottom after 0.5s">
+                    <h2>CAPITÁN <br> FRANCISCO EITO <br/></h2>
+                    <p>
+                        Colegio Militar de la Nación.
+                    </p>
+                </div>
+                
+                
+            </div>
+
+        </div>
+
+    </section>
+    <!-- TEAM SECTION END-->
+    <section id="contact-sec">
+        <div class="container">
+            <div class="row pad-btm">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-12">
+                    <h1 data-scroll-reveal="enter from the bottom after 0.1s">CONTACTO </h1>
+                    <p data-scroll-reveal="enter from the bottom after 0.3s">
+                        Para soporte contactar a panchoeito@hotmail.com
+                    </p>
+                </div>
+
+            </div>
+            <div class="row pad-btm">
+
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12  " data-scroll-reveal="enter from the bottom after 0.5s">
+                    <h2>DIRECCIÓN</h2>
+                    <p>
+                        Ruta Provincial 201 y Aviador Benjamin Matienzo,
+                           <br />
+                        EL PALOMAR, PROVINCIA DE BUENOS AIRES, 
+                           <br />
+                        ARGENTINA
+                    </p>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2  col-xs-12 " data-scroll-reveal="enter from the bottom after 0.6s">
+                    <img src="{% static 'Sala_de_armas/assets/img/1t.jpg' %}" class="img-circle img-responsive cnt-img" />
+
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4  col-xs-12 " data-scroll-reveal="enter from the bottom after 0.6s">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                          Lorem ipsum dolor sit amet.
+                    </p>
+                    <div class="form-group">
+                        <input type="text" class="form-control" />
+                        <br />
+                        <a href="#" class="btn btn-primary">SUBSCRIBE FOR UPDATES</a>
+                    </div>
+                </div>
+
+            </div>
+            
+                 </div>
+
+    </section>
+    <!-- CONTACT SECTION END-->
+
+    {% endblock %}
