@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import request
-from Sala_de_armas.forms import Registro, Registrofusil, Registromunicion
+from Sala_de_armas.forms import RegistrousuarioForm, RegistrofusilForm, RegistromunicionForm
 from Sala_de_armas.models import Usuarios, Fusile, Municion
 
 
@@ -25,6 +25,8 @@ def registrousuarios(request):
     return render(request, 'Sala_de_armas/registrousuario.html')
 
 def registrofusiles(request):
+
+
     
     if request.method == "POST":
         print(f"{request.POST}")
@@ -32,17 +34,20 @@ def registrofusiles(request):
         ni = request.POST["ni"]
         fusil = Fusile(tipo=tipo, ni=ni)
         fusil.save()
-        
+
     return render(request, 'Sala_de_armas/registrofusiles.html')
 
 def registromunicion(request):
     
     if request.method == "POST":
-        print(f"{request.POST}")
-        calibre = request.POST["calibre"]
-        cantidad = request.POST["cantidad"]
-        municion = Municion(calibre=calibre, cantidad=cantidad)
-        municion.save()
+        formularioMunicion = RegistromunicionForm(request.POST)
+        print(formularioMunicion)
+        
+        if formularioMunicion.is_valid:
+            registro = formularioMunicion.cleaned_data
+            print(registro)
+            municion = Municion(calibre=registro["calibre"], cantidad=registro["cantidad"])
+            municion.save()
         
     return render(request, 'Sala_de_armas/registromunicion.html')
 
