@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import request
-from Sala_de_armas.forms import RegistrousuarioForm, RegistrofusilForm, RegistromunicionForm
+from Sala_de_armas.forms import RegistrousuarioForm, RegistrofusilForm, RegistromunicionForm, ConsultausuarioForm
 from Sala_de_armas.models import Usuarios, Fusile, Municion
 
 
@@ -66,8 +66,21 @@ def registromunicion(request):
     return render(request, 'Sala_de_armas/registromunicion.html', {"formularioMunicion": formularioMunicion})
 
 
+def consultausuario(request):
+    
+    return render(request, 'Sala_de_armas/consultausuario.html')
+
 def consulta(request):
     
+    if request.POST['dni']:
+            
+        dni = request.POST['dni']
+        usuario = Usuarios.objects.filter(dni__icontains=dni)
+            
+        return render(request, 'Sala_de_armas/consultausuario.html', {"usuario":usuario, "dni": dni})
     
+    else:
+        
+        respuesta = "No enviaste datos"
     
-    return render(request, 'Sala_de_armas/consulta.html')
+    return HttpResponse(respuesta)
