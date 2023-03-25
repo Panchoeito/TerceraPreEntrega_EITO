@@ -17,9 +17,10 @@
 
                         <form action="" method="POST"> {% csrf_token %}
                             
-                            <p>Calibre:   <input type="text" class="formcontrol" name="calibre"></p>
-                            <p>Cantidad: <input type="text" class="formcontrol" name="cantidad"></p>
-                            
+                            <table>
+                                {{ formularioMunicion.as_table }}
+                            </table>
+
                             <input href="#" class="btn btn-primary" type="submit" class="formcontrol" value="Enviar"></p>
 
                         </form>

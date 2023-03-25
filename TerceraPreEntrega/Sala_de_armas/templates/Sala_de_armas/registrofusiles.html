@@ -16,8 +16,9 @@
                         {% endif %}
                         <form action="" method="POST"> {% csrf_token %}
                             
-                            <p>Tipo:   <input type="text" name="tipo"></p>
-                            <p>Ni: <input type="number" name="ni"></p>
+                            <table>
+                                {{ formularioFusiles.as_table }}
+                            </table>
                             
                             <input href="#" class="btn btn-primary" type="submit" class="formcontrol" value="Enviar"></p>
 

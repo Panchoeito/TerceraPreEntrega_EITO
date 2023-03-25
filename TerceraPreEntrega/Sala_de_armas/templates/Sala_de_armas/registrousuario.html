@@ -18,9 +18,10 @@
                         <div class="form-group">
                             <form action="" method="POST"> {% csrf_token %}
                             
-                                <p>Nombre:   <input type="text" class="formcontrol" name="nombre"/></p>
-                                <p>Apellido: <input type="text" class="formcontrol" name="apellido"/></p>
-                                <p>Dni:      <input type="number" class="formcontrol" name="dni"/></p>
+                                <table>
+                                    {{ formularioUsuario.as_table }}
+                                </table>
+                                
                                 <input href="#" class="btn btn-primary" type="submit" class="formcontrol" value="Enviar"></p>
 
                             </form>
