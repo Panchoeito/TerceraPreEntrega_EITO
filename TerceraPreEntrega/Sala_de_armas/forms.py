@@ -13,3 +13,6 @@ class RegistrofusilForm(forms.Form):
 class RegistromunicionForm(forms.Form):
     calibre = forms.CharField(max_length=20)
     cantidad = forms.IntegerField()
+    
+class ConsultausuarioForm(forms.Form):
+    dni = forms.IntegerField()

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import request
-from Sala_de_armas.forms import RegistrousuarioForm, RegistrofusilForm, RegistromunicionForm
+from Sala_de_armas.forms import RegistrousuarioForm, RegistrofusilForm, RegistromunicionForm, ConsultausuarioForm
 from Sala_de_armas.models import Usuarios, Fusile, Municion
 
 
@@ -18,13 +18,16 @@ def registrousuarios(request):
         formularioUsuario = RegistrousuarioForm(request.POST)
         print(formularioUsuario)
         
-        if formularioUsuario.is_valid:
+        if formularioUsuario.is_valid():
             registro = formularioUsuario.cleaned_data
             print(registro)
             usuario = Usuarios(nombre=registro["nombre"], apellido=registro["apellido"], dni=registro["dni"])
             usuario.save()
-        
-    return render(request, 'Sala_de_armas/registrousuario.html')
+            return render(request, 'Sala_de_armas/index.html')
+    else:
+        formularioUsuario = RegistrousuarioForm()
+    
+    return render(request, 'Sala_de_armas/registrousuario.html', {"formularioUsuario": formularioUsuario})
 
 def registrofusiles(request):
 
@@ -32,13 +35,18 @@ def registrofusiles(request):
         formularioFusiles = RegistrofusilForm(request.POST)
         print(formularioFusiles)
         
-        if formularioFusiles.is_valid:
+        if formularioFusiles.is_valid():
             registro = formularioFusiles.cleaned_data
             print(registro)
             fusil = Fusile(tipo=registro["tipo"], ni=registro["ni"])
             fusil.save()
+            return render(request, 'Sala_de_armas/index.html')
+    else:
+        formularioFusiles = RegistrofusilForm()
+    
+    return render(request, 'Sala_de_armas/registrofusiles.html', {"formularioFusiles": formularioFusiles})
 
-    return render(request, 'Sala_de_armas/registrofusiles.html')
+
 
 def registromunicion(request):
     
@@ -46,16 +54,33 @@ def registromunicion(request):
         formularioMunicion = RegistromunicionForm(request.POST)
         print(formularioMunicion)
         
-        if formularioMunicion.is_valid:
+        if formularioMunicion.is_valid():
             registro = formularioMunicion.cleaned_data
             print(registro)
             municion = Municion(calibre=registro["calibre"], cantidad=registro["cantidad"])
             municion.save()
-        
-    return render(request, 'Sala_de_armas/registromunicion.html')
+            return render(request, 'Sala_de_armas/index.html')
+    else:
+        formularioMunicion = RegistromunicionForm()
+    
+    return render(request, 'Sala_de_armas/registromunicion.html', {"formularioMunicion": formularioMunicion})
+
+
+def consultausuario(request):
+    
+    return render(request, 'Sala_de_armas/consultausuario.html')
 
 def consulta(request):
     
+    if request.POST['dni']:
+            
+        dni = request.POST['dni']
+        usuario = Usuarios.objects.filter(dni__icontains=dni)
+            
+        return render(request, 'Sala_de_armas/consultausuario.html', {"usuario":usuario, "dni": dni})
     
+    else:
+        
+        respuesta = "No enviaste datos"
     
-    return render(request, 'Sala_de_armas/consulta.html')
+    return HttpResponse(respuesta)
