@@ -1,0 +1,37 @@
+﻿{% extends 'Sala_de_armas/padre.html' %}
+
+{% load static %}
+
+    {% block contenido %}
+
+
+    <section id="about-sec">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-12">
+                    <h1 data-scroll-reveal="enter from the bottom after 0.1s">REGISTRO DE USUARIOS </h1>
+                    <p data-scroll-reveal="enter from the bottom after 0.3s">
+                        
+                        {% if formularioRegistro.errors %}
+                        <p style="color: red;"> Están mal los datos, revisar</p>
+                        {% endif %}
+                        <div class="form-group">
+                            <form action="" method="POST"> {% csrf_token %}
+                            
+                                <p>Nombre:   <input type="text" class="formcontrol" name="nombre"/></p>
+                                <p>Apellido: <input type="text" class="formcontrol" name="apellido"/></p>
+                                <p>Dni:      <input type="number" class="formcontrol" name="dni"/></p>
+                                <input href="#" class="btn btn-primary" type="submit" class="formcontrol" value="Enviar"></p>
+
+                            </form>
+                        </div>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- ABOUT SECTION END-->
+   
+
+    {% endblock %}

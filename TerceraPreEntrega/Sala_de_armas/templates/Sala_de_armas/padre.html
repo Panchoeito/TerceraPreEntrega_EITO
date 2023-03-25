@@ -69,6 +69,11 @@
             <li><a data-toggle="tooltip" data-placement="left" title="Features" href="#features-sec">Features</a></li>
             <li><a data-toggle="tooltip" data-placement="left" title="Team" href="#team-sec">Team</a></li>
             <li><a data-toggle="tooltip" data-placement="left" title="Contact" href="#contact-sec">Contact</a></li>
+            <li><a data-toggle="tooltip" data-placement="left" title="Inicio" href="{% url 'Inicio' %}">Inicio</a></li>
+            <li><a data-toggle="tooltip" data-placement="left" title="Registro de Usuarios" href="{% url 'registrousuarios' %}">Registro de Usuarios</a></li>
+            <li><a data-toggle="tooltip" data-placement="left" title="Registro de Fusiles" href="{% url 'registrofusiles' %}">Registro de Fusiles</a></li>
+            <li><a data-toggle="tooltip" data-placement="left" title="Registro de Municion" href="{% url 'registromunicion' %}">Registro de Municion</a></li>
+            <li><a data-toggle="tooltip" data-placement="left" title="Contact" href="#contact-sec">Contacto</a></li>
         </ul>
     </div>
     <!-- NAV SECTION END-->
@@ -81,17 +86,17 @@
     </div>
     <!-- FOOTER SECTION END-->
     <!--CORE SCRIPTS-->
-    <script src="assets/js/jquery-1.11.1.js"></script>
+    <script src="{% static 'assets/js/jquery-1.11.1.js' %}"></script>
     <!--BOOTSTRAP SCRIPTS-->
-    <script src="assets/js/bootstrap.js"></script>
+    <script src="{% static 'assets/js/bootstrap.js' %}"></script>
     <!--WOW SCRIPTS-->
-    <script src="assets/js/wow.js"></script>
+    <script src="{% static 'assets/js/wow.js' %}"></script>
     <!--SCROLL SCRIPTS-->
-    <script src="assets/js/jquery.smooth-scroll.min.js"></script>
+    <script src="{% static 'assets/js/jquery.smooth-scroll.min.js' %}"></script>
     <!--SCROLL ANIMATION SCRIPTS-->
-    <script src="assets/js/scrollReveal.js"></script>
+    <script src="{% static 'assets/js/scrollReveal.js' %}"></script>
     <!--CUSTOM SCRIPTS-->
-    <script src="assets/js/custom.js"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
 </body>
 
 </html>
