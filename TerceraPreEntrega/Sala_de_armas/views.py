@@ -13,27 +13,30 @@ def index(request):
     return render(request, 'Sala_de_armas/index.html')
 
 def registrousuarios(request):
-    
+
     if request.method == "POST":
-        print(f"{request.POST}")
-        nombre = request.POST["nombre"]
-        apellido = request.POST["apellido"]
-        dni = request.POST["dni"]
-        usuario = Usuarios(nombre=nombre, apellido=apellido, dni=dni)
-        usuario.save()
+        formularioUsuario = RegistrousuarioForm(request.POST)
+        print(formularioUsuario)
+        
+        if formularioUsuario.is_valid:
+            registro = formularioUsuario.cleaned_data
+            print(registro)
+            usuario = Usuarios(nombre=registro["nombre"], apellido=registro["apellido"], dni=registro["dni"])
+            usuario.save()
         
     return render(request, 'Sala_de_armas/registrousuario.html')
 
 def registrofusiles(request):
 
-
-    
     if request.method == "POST":
-        print(f"{request.POST}")
-        tipo = request.POST["tipo"]
-        ni = request.POST["ni"]
-        fusil = Fusile(tipo=tipo, ni=ni)
-        fusil.save()
+        formularioFusiles = RegistrofusilForm(request.POST)
+        print(formularioFusiles)
+        
+        if formularioFusiles.is_valid:
+            registro = formularioFusiles.cleaned_data
+            print(registro)
+            fusil = Fusile(tipo=registro["tipo"], ni=registro["ni"])
+            fusil.save()
 
     return render(request, 'Sala_de_armas/registrofusiles.html')
 
