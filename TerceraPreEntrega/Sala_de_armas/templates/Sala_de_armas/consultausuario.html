@@ -4,63 +4,13 @@
 
     {% block contenido %}
 
+    <form action="/consulta" method="GET">
 
-    <section id="about-sec">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-8 col-sm-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-12">
-                    <h1 data-scroll-reveal="enter from the bottom after 0.1s">CONSULTA DE USUARIOS </h1>
-                    <p data-scroll-reveal="enter from the bottom after 0.3s">
-                        
-                        {% if formularioRegistro.errors %}
-                        <p style="color: red;"> Están mal los datos, revisar</p>
-                        {% endif %}
-                        <div class="form-group">
-                            <form action="" method="POST"> {% csrf_token %}
-                                
-                                    <p> Dni: <input type = "number" name="dni">
-                                
-                                    <input href="#" class="btn btn-primary" type="submit" class="formcontrol" value="Enviar"></p>
-                                
-                            </form>
-                            <p>Estamos buscando el {{dni}}</p>
-                            
-                            {% if usuario %}
+        <input type="number" name="dni" id="dni">
 
-                            <ul>
-                            {% for user in usuario %}
-                                <li>{{ user.id }}<li>
-                                <li>{{ user.nombre }}<li>
-                                <li>{{ user.apellido }}<li>
-                                <li>{{ user.dni }}<li>
-                            {% endfor %}
-                            </ul>
-                            
-                            {% endif %}
+        <input type="submit" value="Buscar"
 
-                            <table>
-    
-                                <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Apellido</th>
-                                <th>DNI</th>
-                                <tr>
-                                    <td>{{ usuario.id }} </td>
-                                    <td>{{ usuario.nombre }}</td>
-                                    <td>{{ usuario.apellido }}</td>
-                                    <td>{{ usuario.dni }}</td>
-                                </tr>
-                            </table>
-    
-                                
-                        </div>
-                    </p>
-                </div>
 
-            </div>
-        </div>
-    </section>
-    <!-- ABOUT SECTION END-->
    
 
     {% endblock %}

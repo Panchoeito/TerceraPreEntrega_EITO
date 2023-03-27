@@ -70,17 +70,17 @@ def consultausuario(request):
     
     return render(request, 'Sala_de_armas/consultausuario.html')
 
+
+
 def consulta(request):
     
-    if request.POST['dni']:
-            
-        dni = request.POST['dni']
-        usuario = Usuarios.objects.filter(dni__icontains=dni)
-            
-        return render(request, 'Sala_de_armas/consultausuario.html', {"usuario":usuario, "dni": dni})
+    if request.GET["dni"]:
+
+        dni = request.GET["dni"]
+        usuario = Usuarios.objects.filter( dni__contains = dni )
     
+        return render(request, 'Sala_de_armas/consulta.html', {"usuario": usuario, "dni":dni})
     else:
-        
         respuesta = "No enviaste datos"
-    
+        
     return HttpResponse(respuesta)
